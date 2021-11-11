@@ -19,6 +19,6 @@ body {
 }
 
 .container {
-    width: 1000px;
-    margin: auto;
+    width: 600px;
+    /* margin: auto; */
 }
