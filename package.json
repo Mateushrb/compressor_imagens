@@ -1,0 +1,29 @@
+{
+  "name": "compressor_imagens",
+  "version": "1.0.0",
+  "description": "Compressor web de imagens com backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mateushrb/compressor_imagens.git"
+  },
+  "author": "Mateus Henrique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mateushrb/compressor_imagens/issues"
+  },
+  "homepage": "https://github.com/Mateushrb/compressor_imagens#readme",
+  "dependencies": {
+    "compress-images": "^2.0.1",
+    "compress-images-tool": "^1.0.10",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "pngquant-bin": "^7.0.2",
+    "tinify": "^1.6.1"
+  }
+}
