@@ -36,31 +36,31 @@
     
         <main>
             <div class="upload-bar">
-                <div class="upload-name">
-                    <p>Upload Files</p>
-                    <i class="fas fa-upload fa-2x"></i>
-                </div>
-                <div class="btn">
-                    <button id="add-img">Add Img</button>
-                    <input id="comprimir" value="Comprimir" type="submit" form="form">
-                </div>
+                <!-- <div class="upload-name"> -->
+                <p>Upload Files</p>
+                <i class="fas fa-upload fa-2x"></i>
+                <!-- </div> -->
+                <!-- <div class="btn">
+                            <button id="add-img">Add Img</button>
+                            <input id="comprimir" value="Comprimir" type="submit" form="form">
+                        </div> -->
             </div>
             <form id="form" class="formulario" method="post" enctype="multipart/form-data" action="/uploads">
                 <div class="arquivo">
-                    <label>Imagem 1</label>
+                    <label>Imagem </label>
                     <input type="file" name="arquivo">
                     <i class="far fa-check-circle fa-lg"></i>
                 </div>
-                <div class="arquivos">
-                    <label>Imagem 3</label>
-                    <input type="file" name="arquivo">
-                    <i class="fas fa-ellipsis-h fa-lg"></i>
+                <div class="nivel">
+                    <p>Escolha o nível: </p>
+                    <input type="range" name="nivel" value="70" min="1" max="100" class="slider" id="myRange">
+                    <p>Nível <span id="demo"></span></p>
                 </div>
             </form>
             <div class="status-bar">
-                <p>Status</p>
+                <input id="comprimir" value="Comprimir" type="submit" form="form">
             </div>
-            
+        
         </main>
     
         <footer>

@@ -20,6 +20,39 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 let acessos = 0;
+
+app.get("/styles/_footer.css", function(req, res) {
+    res.sendFile(__dirname + "/views/styles/_footer.css");
+});
+
+app.get("/styles/_header.css", function (req, res) {
+    res.sendFile(__dirname + "/views/styles/_header.css");
+});
+
+app.get("/styles/_main.css", function (req, res) {
+    res.sendFile(__dirname + "/views/styles/_main.css");
+});
+
+app.get("/styles/_footer.css", function (req, res) {
+    res.sendFile(__dirname + "/views/styles/_footer.css");
+});
+
+app.get("/images/logo.png", function (req, res) {
+    res.sendFile(__dirname + "/views/images/logo.png");
+});
+
+app.get("/images/icon.png", function (req, res) {
+    res.sendFile(__dirname + "/views/images/icon.png");
+})
+
+app.get("/style.css", function (req, res) {
+    res.sendFile(__dirname + "/views/style.css");
+})
+
+app.get("/script.js", function (req, res) {
+    res.sendFile(__dirname + "/views/script.js");
+})
+
 app.get("/", (req, res) => {
     res.render("index");
     console.log("1 acesso em: " + new Date());

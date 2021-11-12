@@ -24,35 +24,35 @@
                     <h2>O que é mais pesado <i class="far fa-grin-squint-tears fa-lg"></i><br><span>1kg de ferro ou 1kg de algodão?</span></h2>
                 </div>
             </div>
-            <p class="descricao descricao-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum explicabo delectus ratione, vitae, distinctio id officiis ea recusandae quibusdam molestias velit tenetur accusamus? Ratione, reiciendis sunt provident est vel fuga.</p>
-            <p class="descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, quia. Deleniti aperiam perspiciatis, autem necessitatibus quibusdam quos labore modi eligendi natus consequuntur dolore nobis possimus fuga doloremque facere deserunt totam.</p>
+            <p class="descricao descricao-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum explicabo delectus ratione, vitae, distinctio id officiis ea recusandae quibusdam molestias velit</p>
+            <p class="descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, quia. Deleniti aperiam perspiciatis, autem necessitatibus quibusdam quos labore modi</p>
         </header>
     
         <main>
             <div class="upload-bar">
-                <div class="upload-name">
+                <!-- <div class="upload-name"> -->
                     <p>Upload Files</p>
                     <i class="fas fa-upload fa-2x"></i>
-                </div>
-                <div class="btn">
+                <!-- </div> -->
+                <!-- <div class="btn">
                     <button id="add-img">Add Img</button>
                     <input id="comprimir" value="Comprimir" type="submit" form="form">
-                </div>
+                </div> -->
             </div>
             <form id="form" class="formulario" method="post" enctype="multipart/form-data" action="/uploads">
                 <div class="arquivo">
-                    <label>Imagem 1</label>
+                    <label>Imagem </label>
                     <input type="file" name="arquivo">
                     <i class="far fa-check-circle fa-lg"></i>
                 </div>
-                <div class="arquivos">
-                    <label>Imagem 3</label>
-                    <input type="file" name="arquivo">
-                    <i class="fas fa-ellipsis-h fa-lg"></i>
+                <div class="nivel">
+                    <p>Escolha o nível: </p>
+                    <input type="range" name="nivel" value="70" min="1" max="100" class="slider" id="myRange">
+                    <p>Nível <span id="demo"></span></p>
                 </div>
             </form>
             <div class="status-bar">
-                <p>Status</p>
+                <input id="comprimir" value="Comprimir" type="submit" form="form">
             </div>
             
         </main>
