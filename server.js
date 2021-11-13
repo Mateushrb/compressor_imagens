@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const multer = require("multer");
 const path = require("path");
+const bodyParser = require('body-parser');
+
 app.set('view engine', 'ejs');
 
 
+app.unsubscribe(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 
 const storage = multer.diskStorage({
@@ -60,9 +64,35 @@ app.get("/", (req, res) => {
     console.log("Total de acessos: " + acessos + "\n");
 });
 
+// app.use(express.static('./src'));
+
+const Compress = require('./compressor.js');
 app.post("/uploads", upload.single("arquivo"), (req, res) => {
-    res.send("Arquivo recebido");
+    let qualidade = parseInt(req.body.nivel);
+    let input = req.file.filename;
+
     console.log("Arquivo recebido\n");
+
+    setTimeout(Compress(input, qualidade), 5000);
+    //Compress(input, qualidade);
+
+    res.download(`comprimidas/${input}` + '_comprimida.jpg');
+
+    
+    
+    
+    //res.send("Arquivo recebido e o nível escolhido foi: " + qualidade);
+    
+    //------//
+
+
+
+    //------//
+    console.log("Arquivo enviado\n");
+    
+    //res.download(`comprimidas/${input}` + '_comprimida.jpg');
+    
+    
 });
 
 

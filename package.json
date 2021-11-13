@@ -18,12 +18,9 @@
   },
   "homepage": "https://github.com/Mateushrb/compressor_imagens#readme",
   "dependencies": {
-    "compress-images": "^2.0.1",
-    "compress-images-tool": "^1.0.10",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "multer": "^1.4.3",
-    "pngquant-bin": "^7.0.2",
-    "tinify": "^1.6.1"
+    "jimp": "^0.16.1",
+    "multer": "^1.4.3"
   }
 }
