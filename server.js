@@ -68,31 +68,36 @@ app.get("/", (req, res) => {
 
 const Compress = require('./compressor.js');
 app.post("/uploads", upload.single("arquivo"), (req, res) => {
+
     let qualidade = parseInt(req.body.nivel);
     let input = req.file.filename;
 
     console.log("Arquivo recebido\n");
 
-    setTimeout(Compress(input, qualidade), 5000);
-    //Compress(input, qualidade);
+    // --- OBJETIVO --- //
+    //Compress(input, qualidade);                               //-- Primeiro --//
+    //res.download(`comprimidas/${input}` + '_comprimida.jpg'); //-- Segundo --//
+    //console.log("Arquivo enviado\n");                         //-- Terceiro --//
+    
+    // -- Utilizando Promise -- //
+    const envia_arquivo = async () => {
+        const comprimir = new Promise((resolver,rejeitar) => {
+            Compress(input, qualidade);
+        })
+        await comprimir; // Infinity loading - PROBLEMA
+        res.download(`comprimidas/${input}` + '_comprimida.jpg');
+        console.log("Arquivo enviado\n");
+    }
+    envia_arquivo();
 
-    res.download(`comprimidas/${input}` + '_comprimida.jpg');
+    
+    // -- Utilizando setTimeout, funciona, mas pode ser problemático -- //
+    Compress(input, qualidade);
+    setTimeout(function() {
+        res.download(`comprimidas/${input}` + '_comprimida.jpg');
+        console.log("Arquivo enviado\n"); 
+    }, 12000);
 
-    
-    
-    
-    //res.send("Arquivo recebido e o nível escolhido foi: " + qualidade);
-    
-    //------//
-
-
-
-    //------//
-    console.log("Arquivo enviado\n");
-    
-    //res.download(`comprimidas/${input}` + '_comprimida.jpg');
-    
-    
 });
 
 
