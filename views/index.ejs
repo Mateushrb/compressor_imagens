@@ -48,8 +48,8 @@
             <form id="form" class="formulario" method="post" enctype="multipart/form-data" action="/uploads">
                 <div class="arquivo">
                     <label>Imagem </label>
-                    <input type="file" name="arquivo">
-                    <i class="far fa-check-circle fa-lg"></i>
+                    <input type="file" name="arquivo" id="fileUpload">
+                    <i id="stats_icon" class="fas fa-exclamation-circle fa-lg"></i>
                 </div>
                 <div class="nivel">
                     <p>Escolha o nível: </p>
@@ -58,7 +58,7 @@
                 </div>
             </form>
             <div class="status-bar">
-                <input id="comprimir" value="Comprimir" type="submit" form="form">
+                <input id="comprimir" value="Comprimir" type="button">
             </div>
         
         </main>

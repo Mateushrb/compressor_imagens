@@ -1,5 +1,6 @@
 main {
     margin-top: 10px;
+    padding-bottom: 20px;
 }
 
 .upload-bar {
@@ -24,11 +25,16 @@ main {
 }
 
 .fa-check-circle {
-    padding-left:130px;
+    padding-left: 130px;
     color: rgb(45, 224, 0)
 }
 
-.fa-ellipsis-h {
+.fa-exclamation-circle {
+    padding-left: 130px;
+    color: rgb(255, 145, 0);
+}
+
+.fa-long-arrow-alt-left {
     padding-left: 130px;
     color: red;
 }

@@ -6,10 +6,8 @@ const bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 
-
 app.unsubscribe(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -20,43 +18,11 @@ const storage = multer.diskStorage({
     }
 });
 
-
 const upload = multer({storage});
 
 let acessos = 0;
 
-app.get("/styles/_footer.css", function(req, res) {
-    res.sendFile(__dirname + "/views/styles/_footer.css");
-});
-
-app.get("/styles/_header.css", function (req, res) {
-    res.sendFile(__dirname + "/views/styles/_header.css");
-});
-
-app.get("/styles/_main.css", function (req, res) {
-    res.sendFile(__dirname + "/views/styles/_main.css");
-});
-
-app.get("/styles/_footer.css", function (req, res) {
-    res.sendFile(__dirname + "/views/styles/_footer.css");
-});
-
-app.get("/images/logo.png", function (req, res) {
-    res.sendFile(__dirname + "/views/images/logo.png");
-});
-
-app.get("/images/icon.png", function (req, res) {
-    res.sendFile(__dirname + "/views/images/icon.png");
-})
-
-app.get("/style.css", function (req, res) {
-    res.sendFile(__dirname + "/views/style.css");
-})
-
-app.get("/script.js", function (req, res) {
-    res.sendFile(__dirname + "/views/script.js");
-})
-
+app.use(express.static('./public'));
 app.get("/", (req, res) => {
     res.render("index");
     console.log("1 acesso em: " + new Date());
@@ -64,9 +30,14 @@ app.get("/", (req, res) => {
     console.log("Total de acessos: " + acessos + "\n");
 });
 
-// app.use(express.static('./src'));
+var Jimp = require('jimp');
+const JPEG = require('jpeg-js')
+Jimp.decoders['image/jpeg'] = (data) => JPEG.decode(data, {
+	maxMemoryUsageInMB: 6144,
+	maxResolutionInMP: 600
+})
 
-const Compress = require('./compressor.js');
+//const Compress = require('./compressor.js');
 app.post("/uploads", upload.single("arquivo"), (req, res) => {
 
     let qualidade = parseInt(req.body.nivel);
@@ -74,31 +45,26 @@ app.post("/uploads", upload.single("arquivo"), (req, res) => {
 
     console.log("Arquivo recebido\n");
 
-    // --- OBJETIVO --- //
-    //Compress(input, qualidade);                               //-- Primeiro --//
-    //res.download(`comprimidas/${input}` + '_comprimida.jpg'); //-- Segundo --//
-    //console.log("Arquivo enviado\n");                         //-- Terceiro --//
-    
-    // -- Utilizando Promise -- //
     const envia_arquivo = async () => {
-        const comprimir = new Promise((resolver,rejeitar) => {
-            Compress(input, qualidade);
-        })
-        await comprimir; // Infinity loading - PROBLEMA
-        res.download(`comprimidas/${input}` + '_comprimida.jpg');
-        console.log("Arquivo enviado\n");
-    }
-    envia_arquivo();
-
-    
-    // -- Utilizando setTimeout, funciona, mas pode ser problemático -- //
-    Compress(input, qualidade);
+    await Jimp.read(`./uploads/${input}`).then(lenna => {
+        return lenna
+        //.resize(256, 256) // resize
+        .quality(qualidade) // set JPEG quality
+        //.greyscale() // set greyscale
+        .write(`./comprimidas/${input}_comprimida.jpg`); // save
+     })
+    .catch(err => {
+        console.error(err);
+        res.render('limite');
+    });
     setTimeout(function() {
         res.download(`comprimidas/${input}` + '_comprimida.jpg');
-        console.log("Arquivo enviado\n"); 
-    }, 12000);
-
+    }, 500);
+    }
+    envia_arquivo();  
+            
 });
+    
 
 
 app.listen(8080,() => {
