@@ -46,27 +46,25 @@ app.post("/uploads", upload.single("arquivo"), (req, res) => {
     console.log("Arquivo recebido\n");
 
     const envia_arquivo = async () => {
-    await Jimp.read(`./uploads/${input}`).then(lenna => {
-        return lenna
-        //.resize(256, 256) // resize
-        .quality(qualidade) // set JPEG quality
-        //.greyscale() // set greyscale
-        .write(`./comprimidas/${input}_comprimida.jpg`); // save
-     })
-    .catch(err => {
-        console.error(err);
-        res.render('limite');
-    });
-    setTimeout(function() {
-        res.download(`comprimidas/${input}` + '_comprimida.jpg');
-    }, 500);
+        await Jimp.read(`./uploads/${input}`).then(lenna => {
+            return lenna
+            //.resize(256, 256) // resize
+            .quality(qualidade) // set JPEG quality
+            //.greyscale() // set greyscale
+            .write(`./comprimidas/${input}_comprimida.jpg`); // save
+        })
+        .catch(err => {
+            console.error(err);
+            res.render('limite');
+        });
+        setTimeout(function() {
+            res.download(`comprimidas/${input}` + '_comprimida.jpg');
+        }, 500);
     }
     envia_arquivo();  
             
 });
     
-
-
 app.listen(8080,() => {
     console.log("Servidor rodando! Porta: 8080");
     console.log("Acessos: " + acessos);
