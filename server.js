@@ -38,30 +38,68 @@ Jimp.decoders['image/jpeg'] = (data) => JPEG.decode(data, {
 })
 
 //const Compress = require('./compressor.js');
-app.post("/uploads", upload.single("arquivo"), (req, res) => {
+app.post("/qualidade", upload.single("arquivo"), (req, res) => {
 
-    let qualidade = parseInt(req.body.nivel);
     let input = req.file.filename;
+    let qualidade = parseInt(req.body.nivel);
 
     console.log("Arquivo recebido\n");
 
     const envia_arquivo = async () => {
+        console.log('Renderizando\n');
         await Jimp.read(`./uploads/${input}`).then(lenna => {
             return lenna
-            //.resize(256, 256) // resize
             .quality(qualidade) // set JPEG quality
-            //.greyscale() // set greyscale
             .write(`./comprimidas/${input}_comprimida.jpg`); // save
         })
         .catch(err => {
             console.error(err);
             res.render('limite');
         });
+
         setTimeout(function() {
             res.download(`comprimidas/${input}` + '_comprimida.jpg');
-        }, 500);
+            console.log('Imagen enviada\n');
+        }, 200);
     }
     envia_arquivo();  
+            
+});
+
+app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
+
+    let input = req.file.filename;
+    let qualidade = parseInt(req.body.nivel);
+
+    let largura = parseInt(req.body.largura);
+    let altura = parseInt(req.body.altura);
+
+    console.log("Arquivo recebido\n");
+
+    const envia_arquivo = async () => {
+        console.log('Renderizando\n');
+        await Jimp.read(`./uploads/${input}`).then(lenna => {
+            return lenna
+            .resize(largura, altura)
+            .quality(qualidade) // set JPEG quality
+            .write(`./comprimidas/${input}_comprimida.jpg`); // save
+        })
+        .catch(err => {
+            console.error(err);
+            res.render('limite');
+        });
+
+        setTimeout(function() {
+            res.download(`comprimidas/${input}` + '_comprimida.jpg');
+            console.log('Imagen enviada\n');
+        }, 200);
+    }
+
+    if (largura < 1 || largura > 9999 || altura < 1 || altura > 9999) {
+        res.render('valores');
+    } else {
+        envia_arquivo();
+    };
             
 });
     

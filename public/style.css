@@ -20,7 +20,7 @@ body {
 
 .container {
     width: 600px;
-    margin: auto;
+    /* margin: auto; */
 }
 
 @media screen and (max-width: 500px) {

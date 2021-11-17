@@ -21,8 +21,8 @@ Jimp.decoders['image/jpeg'] = (data) => JPEG.decode(data, {
 
 Jimp.read(`./teste.jpg`).then(lenna => {
   return lenna
-    //.resize(256, 256) // resize
-    .quality(50) // set JPEG quality
+    .resize(9999, 9999) // resize
+    //.quality(50) // set JPEG quality
     //.greyscale() // set greyscale
     .write(`./comprimidas/teste_comprimido.jpg`); // save
 })
