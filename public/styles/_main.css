@@ -152,11 +152,16 @@ main {
 .redimensionar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: solid;
     border-width: 1px;
     padding: 10px 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.proporcao {
+    padding-top: 5px;
 }
 
 .dimencoes div {
