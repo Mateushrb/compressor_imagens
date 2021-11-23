@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles/limite.css">
+    <title>Limite</title>
+</head>
+
+<body>
+    <div>
+        <h2>Renderização concluída!</h2>
+        <p>Sua imagem está pronta para baixar, utilize o botão abaixo para fazer o download</p>
+        <form action="/download" method="post">
+            <input type="text" name="imageName" value="<%= nameImg %>">
+            <!-- <p name="imageName"><%= nameImg %></p> -->
+            <button type="submit">Download</button>
+        </form>
+        <p>Utilize o botão voltar para comprimir outra imagem</p>
+        <input type="button" value="Voltar" onClick="history.go(-1)">
+
+    </div>
+
+</body>
+
+</html>
