@@ -57,13 +57,12 @@ app.post("/qualidade", upload.single("arquivo"), (req, res) => {
             res.render('limite');
         });
 
-        setTimeout(function() {
+        setTimeout(function() { 
             res.download(`comprimidas/${input}` + '_comprimida.jpg');
             console.log('Imagen enviada\n');
         }, 200);
     }
-    envia_arquivo();  
-            
+    envia_arquivo();          
 });
 
 app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
@@ -91,12 +90,18 @@ app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
 
         setTimeout(function() {
             res.download(`comprimidas/${input}` + '_comprimida.jpg');
-            console.log('Imagen enviada\n');
+            console.log('Imagem enviada\n');
         }, 200);
     }
 
     if (largura < 1 || largura > 9999 || altura < 1 || altura > 9999) {
-        res.render('valores');
+        if (altura > 9999) {
+            let alturaExcedida = `A altura da imagem recebida pelo servidor foi: ${altura} e passou do limite de 9999`;
+            res.render('valores', { alturaExcedida: alturaExcedida });
+        } else {
+            let alturaExcedida = 'Erro!';
+            res.render('valores', { alturaExcedida: alturaExcedida });
+        }
     } else {
         envia_arquivo();
     };
