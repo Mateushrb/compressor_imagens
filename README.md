@@ -1,4 +1,4 @@
-Trabalho final
+<h2>Trabalho final</h2>
 
 Site de compressão de imagens
 
