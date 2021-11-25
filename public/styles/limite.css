@@ -22,14 +22,3 @@ div h2 {
 div p {
     font-size: 18px;
 }
-
-input {
-    width: 80px;
-    padding: 5px;
-    border-radius: 20px;
-    background-color: bisque;
-}
-
-input:hover {
-    background-color: beige;
-}
