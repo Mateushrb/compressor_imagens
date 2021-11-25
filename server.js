@@ -58,11 +58,15 @@ app.post("/qualidade", upload.single("arquivo"), (req, res) => {
         });
 
         setTimeout(function() { 
-            res.download(`comprimidas/${input}` + '_comprimida.jpg');
+            res.render("concluido", {arquivo: `${input}_comprimida.jpg`});
             console.log('Imagen enviada\n');
         }, 200);
     }
     envia_arquivo();          
+});
+
+app.get("/download/:nome", (req, res) => {
+    res.download(`comprimidas/${req.params.nome}`);
 });
 
 app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
@@ -81,15 +85,16 @@ app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
             return lenna
             .resize(largura, altura)
             .quality(qualidade) // set JPEG quality
-            .write(`./comprimidas/${input}_comprimida.jpg`); // save
+            .write(`./comprimidas/${input}_comprimida.jpg`) // save
+
         })
         .catch(err => {
             console.error(err);
             res.render('limite');
         });
-
+        
         setTimeout(function() {
-            res.download(`comprimidas/${input}` + '_comprimida.jpg');
+            res.render("concluido", {arquivo: `${input}_comprimida.jpg`});
             console.log('Imagem enviada\n');
         }, 200);
     }
