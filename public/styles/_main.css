@@ -14,10 +14,6 @@ main {
     border-top-right-radius: 10px;
 }
 
-/* .upload-name {
-    display: flex;
-} */
-
 .upload-bar p {
     font-size: 26px;
     font-weight: 700;
@@ -159,6 +155,32 @@ main {
     padding: 10px 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 500px) {
+    .redimensionar {
+        flex-direction: column;
+    }
+    .redimensionar div {
+        padding: 3px 0;
+    }
+    .arquivo {
+        text-align: center;
+    }
+    .fa-check-circle {
+        padding-left: 0px;
+    }
+    
+    .fa-exclamation-circle {
+        padding-left: 0px;
+    }
+    
+    .fa-long-arrow-alt-left {
+        padding-left: 0px;
+    }
+    .formulario {
+        padding: 10px 25px;
+    }
 }
 
 .proporcao {
