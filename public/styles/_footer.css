@@ -1,0 +1,17 @@
+.attribution {
+    width: 540px;
+    margin: auto;
+    font-size: .6875rem;
+    text-align: center;
+    padding-top: 1.25rem;
+    padding-bottom: 1rem;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+@media screen and (max-width: 500px) {
+    .attribution {
+        width: 350px;
+    }
+}
