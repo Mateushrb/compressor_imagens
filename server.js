@@ -182,6 +182,6 @@ app.listen(8080,() => {
     fs.writeFile('relatorio.log', 'Servidor rodando! Porta: 8080\n', {
         encoding: 'utf-8', flag: 'a'
     }, (err) => {
-        console.log('Servidor rodando! Porta: 8080\n')
+        console.log('Servidor rodando! Porta: 8080\nUtilize ctrl + c para parar o servidor')
     });
 });
