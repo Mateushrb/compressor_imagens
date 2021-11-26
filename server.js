@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 
     // Log do servidor
     let acesso = new Date();
-    fs.writeFile('relatório.log', `\n1 acesso em: ${acesso}\n\n`, {
+    fs.writeFile('relatorio.log', `\n1 acesso em: ${acesso}\n\n`, {
         encoding: 'utf-8', flag: 'a'
     }, (err) => {
         console.log(`1 acesso em: ${acesso}\n`);
@@ -55,7 +55,7 @@ app.post("/qualidade", upload.single("arquivo"), (req, res) => {
     let qualidade = parseInt(req.body.nivel);
 
     // Log do servidor
-    fs.writeFile('relatório.log', 'Arquivo recebido\n', {
+    fs.writeFile('relatorio.log', 'Arquivo recebido\n', {
         encoding: 'utf-8', flag: 'a'
     }, (err) => {
         console.log('Arquivo recebido')
@@ -64,7 +64,7 @@ app.post("/qualidade", upload.single("arquivo"), (req, res) => {
     // Função de renderização
     const envia_arquivo = async () => {
         // Log do servidor
-        fs.writeFile('relatório.log', 'Renderizando\n', {
+        fs.writeFile('relatorio.log', 'Renderizando\n', {
             encoding: 'utf-8', flag: 'a'
         }, (err) => {
             console.log('Renderizando')
@@ -87,7 +87,7 @@ app.post("/qualidade", upload.single("arquivo"), (req, res) => {
             res.render("concluido", {arquivo: `${input}_comprimida.jpg`});
 
             // Log do servidor
-            fs.writeFile('relatório.log', 'Imagem renderizada\n', {
+            fs.writeFile('relatorio.log', 'Imagem renderizada\n', {
                 encoding: 'utf-8', flag: 'a'
             }, (err) => {
                 console.log('Imagen renderizada')
@@ -108,7 +108,7 @@ app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
     let altura = parseInt(req.body.altura);
 
     // Log do servidor
-    fs.writeFile('relatório.log', 'Arquivo recebido\n', {
+    fs.writeFile('relatorio.log', 'Arquivo recebido\n', {
         encoding: 'utf-8', flag: 'a'
     }, (err) => {
         console.log('Arquivo recebido')
@@ -116,7 +116,7 @@ app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
 
     const envia_arquivo = async () => {
         // Log do servidor
-        fs.writeFile('relatório.log', 'Renderizando\n', {
+        fs.writeFile('relatorio.log', 'Renderizando\n', {
             encoding: 'utf-8', flag: 'a'
         }, (err) => {
             console.log('Renderizando')
@@ -141,7 +141,7 @@ app.post("/qualidadedimencao", upload.single("arquivo"), (req, res) => {
             res.render("concluido", {arquivo: `${input}_comprimida.jpg`});
 
             // Log do servidor
-            fs.writeFile('relatório.log', 'Imagem renderizada\n', {
+            fs.writeFile('relatorio.log', 'Imagem renderizada\n', {
                 encoding: 'utf-8', flag: 'a'
             }, (err) => {
                 console.log('Imagen renderizada')
@@ -170,7 +170,7 @@ app.get("/download/:nome", (req, res) => {
     res.download(`comprimidas/${req.params.nome}`);
 
     // Log do servidor
-    fs.writeFile('relatório.log', 'Imagem enviada\n', {
+    fs.writeFile('relatorio.log', 'Imagem enviada\n', {
         encoding: 'utf-8', flag: 'a'
     }, (err) => {
         console.log('Imagem enviada\n')
@@ -179,7 +179,7 @@ app.get("/download/:nome", (req, res) => {
     
 app.listen(8080,() => {
     // Log do servidor
-    fs.writeFile('relatório.log', 'Servidor rodando! Porta: 8080\n', {
+    fs.writeFile('relatorio.log', 'Servidor rodando! Porta: 8080\n', {
         encoding: 'utf-8', flag: 'a'
     }, (err) => {
         console.log('Servidor rodando! Porta: 8080\n')
