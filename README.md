@@ -6,13 +6,8 @@ Para instalar e rodar a aplicação é necessário seguir os passos abaixo:
 
 - Clone o repositório
 - Abra a pasta compressor_imagens
-- Instale as dependências necessárias utilizando os seguintes comandos:<br>
-`npm install express --save`<br>
-`npm install ejs --save`<br>
-`npm install multer --save`<br>
-`npm install --save jimp`
-
-- utilize o comando `npm start` para iniciar o servidor
+- Utilize o comando `npm install` para instalar as dependências necessárias<br>
+- Utilize o comando `npm start` para iniciar o servidor
 
 O seguinte link possui imagens para testes:
 
